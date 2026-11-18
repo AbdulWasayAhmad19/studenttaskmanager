@@ -24,7 +24,7 @@ def complete_task():
 
         if 1 <= task_id <= len(tasks):
             tasks[task_id - 1]["completed"] = True
-            print("Task completed successfully!")
+            print(f"Task {task_id} marked as completed!")
         else:
             print("Invalid task ID!")
 
@@ -35,7 +35,8 @@ def main():
     while True:
         print("\n1. Add Task")
         print("2. Display Tasks")
-        print("3. Complete Task")
+        
+        print("3. Exit")
 
         choice = input("Enter choice: ")
 
@@ -44,7 +45,9 @@ def main():
         elif choice == "2":
             display_tasks()
         elif choice == "3":
-            break
+            complete_task()
+        elif choice == "4":
+         break
         else:
             print("Invalid choice!")
 
