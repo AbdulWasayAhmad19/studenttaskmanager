@@ -14,12 +14,28 @@ def display_tasks():
     for i, task in enumerate(tasks, start=1):
         status = "Completed" if task["completed"] else "Pending"
         print(i, task["title"], "-", status)
+        
+        
+def complete_task():
+    display_tasks()
+
+    try:
+        task_id = int(input("Enter task ID to complete: "))
+
+        if 1 <= task_id <= len(tasks):
+            tasks[task_id - 1]["completed"] = True
+            print("Task completed successfully!")
+        else:
+            print("Invalid task ID!")
+
+    except ValueError:
+        print("Please enter a valid number!")
 
 def main():
     while True:
         print("\n1. Add Task")
         print("2. Display Tasks")
-        print("3. Exit")
+        print("3. Complete Task")
 
         choice = input("Enter choice: ")
 
