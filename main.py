@@ -1,36 +1,15 @@
 
-tasks = []
+def complete_task():
+    display_tasks()
 
-def add_task():
-    title = input("Enter task title: ")
-    tasks.append({"title": title, "completed": False})
-    print("Task added successfully!")
+    try:
+        task_id = int(input("Enter task ID to complete: "))
 
-def display_tasks():
-    if not tasks:
-        print("No tasks available.")
-        return
-
-    for i, task in enumerate(tasks, start=1):
-        status = "Completed" if task["completed"] else "Pending"
-        print(i, task["title"], "-", status)
-
-def main():
-    while True:
-        print("\n1. Add Task")
-        print("2. Display Tasks")
-        print("3. Exit")
-
-        choice = input("Enter choice: ")
-
-        if choice == "1":
-            add_task()
-        elif choice == "2":
-            display_tasks()
-        elif choice == "3":
-            break
+        if 1 <= task_id <= len(tasks):
+            tasks[task_id - 1]["completed"] = True
+            print(f"Task {task_id} marked as completed!")
         else:
-            print("Invalid choice!")
+            print("Invalid task ID!")
 
-if __name__ == "__main__":
-    main()
+    except ValueError:
+        print("Please enter a valid number!")
